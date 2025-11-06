@@ -1,0 +1,74 @@
+<section class="dashboard-container">
+  <h2>Panel de Control - CRM BOB Subastas</h2>
+
+  @if (isLoading()) {
+    <app-spinner></app-spinner>
+  } @else {
+    <!-- Tarjetas de resumen -->
+    <div class="cards-grid">
+      <mat-card class="stat-card primary">
+        <mat-icon>group</mat-icon>
+        <div class="text">
+          <h3>Total de Leads</h3>
+          <p>{{ totalLeads() }}</p>
+        </div>
+      </mat-card>
+
+      <mat-card class="stat-card accent">
+        <mat-icon>star</mat-icon>
+        <div class="text">
+          <h3>Leads Calificados</h3>
+          <p>{{ qualifiedLeads() }}</p>
+        </div>
+      </mat-card>
+
+      <mat-card class="stat-card warn">
+        <mat-icon>check_circle</mat-icon>
+        <div class="text">
+          <h3>Leads Cerrados</h3>
+          <p>{{ closedLeads() }}</p>
+        </div>
+      </mat-card>
+
+      <mat-card class="stat-card neutral">
+        <mat-icon>bar_chart</mat-icon>
+        <div class="text">
+          <h3>Promedio Score</h3>
+          <p>{{ avgScore() ?? 'N/A' }}</p>
+        </div>
+      </mat-card>
+    </div>
+
+    <!-- Gráficos -->
+    <div class="charts-section">
+      <mat-card>
+        <h3>Distribución por Ciudad</h3>
+        <p-chart type="bar" [data]="chartByCity()"></p-chart>
+      </mat-card>
+
+      <mat-card>
+        <h3>Distribución por Score</h3>
+        <p-chart type="doughnut" [data]="chartByScore()"></p-chart>
+      </mat-card>
+    </div>
+
+    <!-- Tabla -->
+    <mat-card class="cities-section">
+      <h3>Ciudades con más leads</h3>
+      <table mat-table [dataSource]="topCities()">
+        <ng-container matColumnDef="city">
+          <th mat-header-cell *matHeaderCellDef>Ciudad</th>
+          <td mat-cell *matCellDef="let c">{{ c.city }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="count">
+          <th mat-header-cell *matHeaderCellDef>Cantidad</th>
+          <td mat-cell *matCellDef="let c">{{ c.count }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="['city', 'count']"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['city', 'count'];"></tr>
+      </table>
+    </mat-card>
+  }
+</section>

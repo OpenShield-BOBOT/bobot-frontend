@@ -1,0 +1,32 @@
+.layout-container {
+  display: flex;
+  height: calc(100vh - 70px);
+  margin-top: 70px;
+  overflow: hidden;
+}
+
+app-sidebar {
+  width: 230px;
+  flex-shrink: 0;
+  position: fixed;
+  top: 70px;
+  left: 0;
+  bottom: 0;
+  height: calc(100vh - 70px);
+  z-index: 900;
+  background: var(--bob-dark);
+}
+
+.layout-content {
+  flex: 1;
+  margin-left: 230px;
+  padding: 1.5rem 2rem;
+  overflow-y: auto;
+  height: calc(100vh - 70px);
+  background: #f9fafb;
+  box-sizing: border-box;
+}
+
+.sidebar.collapsed + .layout-content {
+  margin-left: 72px;
+}

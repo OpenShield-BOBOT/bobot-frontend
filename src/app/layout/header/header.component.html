@@ -1,0 +1,26 @@
+<header class="header-container">
+  <div class="header-left">
+    <a routerLink="/" class="logo">
+      <img src="/bob-subastas-logo.png.png" alt="BOB Subastas" />
+    </a>
+
+    <nav class="nav-links">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Inicio</a>
+      <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+      <a routerLink="/leads" routerLinkActive="active">Leads</a>
+    </nav>
+  </div>
+
+  <div class="header-right">
+    <div class="search-bar">
+      <input type="text" placeholder="Buscar..." />
+      <button class="search-btn">
+        <mat-icon>search</mat-icon>
+      </button>
+    </div>
+
+    <button mat-icon-button class="profile-btn" matTooltip="Perfil">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+  </div>
+</header>

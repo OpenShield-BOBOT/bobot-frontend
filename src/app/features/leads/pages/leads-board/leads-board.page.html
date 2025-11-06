@@ -1,0 +1,36 @@
+<section class="board-container">
+  <h2>Leads - Tablero Kanban</h2>
+
+  @if (isLoading()) {
+    <div class="loading">
+      <mat-progress-spinner mode="indeterminate" diameter="45"></mat-progress-spinner>
+    </div>
+  } @else {
+    <div class="kanban-wrapper">
+      @for (status of leadStatuses; track status) {
+        <div class="kanban-column">
+          <h3>{{ status | titlecase }}</h3>
+
+          <div
+            cdkDropList
+            [cdkDropListData]="groupedLeads()[status]"
+            class="lead-list"
+            (cdkDropListDropped)="drop($event, status)"
+          >
+            @for (lead of groupedLeads()[status]; track lead.id) {
+              <app-lead-card
+                cdkDrag
+                [lead]="lead"
+                (view)="viewLead($event)"
+                (edit)="editLead($event)"
+                (delete)="deleteLead($event)"
+              ></app-lead-card>
+            } @empty {
+              <p class="empty">Sin leads</p>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  }
+</section>

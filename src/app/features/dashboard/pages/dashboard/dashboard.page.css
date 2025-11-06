@@ -1,0 +1,103 @@
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+  background: #f9fafb;
+  font-family: 'Inter', sans-serif;
+}
+
+h2 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.2rem;
+}
+
+.stat-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 16px;
+  color: white;
+  padding: 1.5rem;
+  transition: transform 0.2s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+}
+
+.stat-card mat-icon {
+  font-size: 2rem;
+}
+
+.stat-card.primary {
+  background-color: #004aad;
+}
+
+.stat-card.accent {
+  background-color: #00b8b0;
+}
+
+.stat-card.warn {
+  background-color: #fbbc04;
+}
+
+.stat-card.neutral {
+  background-color: #607d8b;
+}
+
+.text h3 {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.text p {
+  font-size: 1.4rem;
+  margin: 0;
+  font-weight: 600;
+}
+
+.charts-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 1.5rem;
+}
+
+mat-card {
+  padding: 1rem;
+  border-radius: 16px;
+  background: white;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+mat-card h3 {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  color: #1e293b;
+}
+
+.cities-section {
+  background: white;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cities-section table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.cities-section th,
+.cities-section td {
+  text-align: left;
+  padding: 0.75rem;
+  border-bottom: 1px solid #e2e8f0;
+}

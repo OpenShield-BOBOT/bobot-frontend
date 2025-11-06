@@ -1,1 +1,30 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+
+:root {
+  --bob-primary: #009688;
+  --bob-accent: #ffc107;
+  --bob-dark: #023047;
+  --bob-bg-light: #e7fef9;
+  --bob-gray: #475569;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background: #f8f9fa;
+  color: var(--bob-dark);
+  overflow-x: hidden;
+}
+
+section {
+  padding: 70px 50px;
+}
+
+h2 {
+  font-size: 34px;
+  font-weight: 800;
+  color: var(--bob-dark);
+  margin-top: 0;
+  margin-bottom: 40px;
+  text-align: center;
+}

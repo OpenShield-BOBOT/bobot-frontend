@@ -1,0 +1,31 @@
+<div class="lead-card">
+  <div class="card-header">
+    <div class="avatar" [style.background]="statusColor">
+      {{ initials }}
+    </div>
+    <div class="info">
+      <h4>{{ lead.name }} {{ lead.lastName }}</h4>
+      <p>{{ lead.email }}</p>
+    </div>
+    <mat-chip [color]="'primary'" selected>
+      {{ lead.lead_score || 'N/A' }}
+    </mat-chip>
+  </div>
+
+  <div class="card-body">
+    <p><mat-icon>location_on</mat-icon> {{ lead.city || 'Sin ciudad' }}</p>
+    <p><mat-icon>call</mat-icon> {{ lead.phone || 'Sin teléfono' }}</p>
+  </div>
+
+  <div class="card-footer">
+    <button mat-icon-button color="primary" matTooltip="Ver detalles" (click)="view.emit(lead.id!)">
+      <mat-icon>visibility</mat-icon>
+    </button>
+    <button mat-icon-button color="accent" matTooltip="Editar" (click)="edit.emit(lead.id!)">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-icon-button color="warn" matTooltip="Eliminar" (click)="delete.emit(lead.id!)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+</div>

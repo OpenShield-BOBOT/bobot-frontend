@@ -1,0 +1,61 @@
+<!-- Botón flotante -->
+<button mat-fab color="primary" class="chatbot-btn" (click)="toggleChat()">
+  <mat-icon>chat</mat-icon>
+</button>
+
+@if (isOpen()) {
+  <div class="chat-container">
+    <div class="chat-header">
+      <img src="/favicon.ico" alt="Logo" class="chat-logo" />
+      BOB Subastas
+    </div>
+
+    <div class="chat-messages">
+      @for (msg of messages(); track $index) {
+        <div [class]="msg.role + ' message'">
+          @if (!msg.typing) {
+            {{ msg.text }}
+          } @else {
+            <div class="typing">
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+            </div>
+          }
+        </div>
+      }
+    </div>
+
+    <div class="chat-input">
+      <input
+        type="text"
+        [value]="input()"
+        (input)="input.set($any($event.target).value)"
+        (keyup.enter)="sendMessage()"
+        placeholder="Escribe un mensaje..."
+      />
+      <button class="send-btn" (click)="sendMessage()" [disabled]="loading()">
+        <mat-icon>send</mat-icon>
+      </button>
+    </div>
+
+    @if (showLeadForm()) {
+      <div class="lead-form">
+        <p>
+          🟢 <b>Alta intención de compra</b><br />
+          Completa tus datos para que un asesor te contacte:
+        </p>
+
+        <form (ngSubmit)="submitLeadForm()" #formLead="ngForm" class="lead-form-body">
+          <input type="text" placeholder="Nombres *" [(ngModel)]="leadData().nombres" name="nombres" required />
+          <input type="text" placeholder="Apellidos *" [(ngModel)]="leadData().apellidos" name="apellidos" required />
+          <input type="text" placeholder="Ciudad *" [(ngModel)]="leadData().ciudad" name="ciudad" required />
+          <input type="text" placeholder="Teléfono *" [(ngModel)]="leadData().telefono" name="telefono" required />
+          <input type="email" placeholder="Correo electrónico *" [(ngModel)]="leadData().correo" name="correo" required />
+          <input type="text" placeholder="DNI (opcional)" [(ngModel)]="leadData().dni" name="dni" />
+          <button type="submit">Enviar</button>
+        </form>
+      </div>
+    }
+  </div>
+}
